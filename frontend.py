@@ -19,8 +19,12 @@ import backend
 
 
 def view_command():
+    listbox.delete(0, END)
     for row in backend.view():
-        listbox.insert()
+        listbox.insert(END, row)
+
+def search_command(title, author, year, isbn):
+    listbox.delete(0, END)
 
 
 window = Tk()
@@ -54,7 +58,7 @@ listbox.configure(yscrollcommand=scroll.set)
 scroll.configure(command=listbox.yview)
 
 view_btn = Button(window, text="View all", width=14, command=view_command)
-search_btn = Button(window, text="Search entry", width=14)
+search_btn = Button(window, text="Search entry", width=14, command=search_command)
 add_btn = Button(window, text="Add entry", width=14)
 update_btn = Button(window, text="Update", width=14)
 delete_btn = Button(window, text="Delete", width=14)
